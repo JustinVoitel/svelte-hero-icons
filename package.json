@@ -1,0 +1,34 @@
+{
+   "name": "svelte-hero-icons",
+   "version": "0.1.0",
+   "description": "Heroicons for Svelte (Project heaviliy based on svelte-feather-icons by dylanblokhuis & Icons completely based on heroicons by refactoringUI)",
+   "main": "index.js",
+   "module": "index.mjs",
+   "svelte": "src/index.js",
+   "files": [
+      "src",
+      "index.mjs",
+      "index.js"
+   ],
+   "scripts": {
+      "build:icons": "npm run clean && ts-node build.ts",
+      "build:dist": "rollup -c",
+      "build": "npm run build:icons && npm run build:dist",
+      "clean": "rm -rf src && rm -rf index.js && rm -rf index.mjs"
+   },
+   "author": "Justin Voitel <justin.voitel@gmail.com>",
+   "license": "MIT",
+   "devDependencies": {
+      "@types/node": "^13.7.4",
+      "pascalcase": "^1.0.0",
+      "rollup": "^1.31.1",
+      "rollup-plugin-node-resolve": "^5.2.0",
+      "rollup-plugin-svelte": "^5.1.1",
+      "rollup-plugin-terser": "^5.2.0",
+      "svelte": "^3.19.1",
+      "ts-node": "^8.6.2",
+      "ts-node-dev": "^1.0.0-pre.44",
+      "typescript": "^3.8.2"
+   },
+   "dependencies": {}
+}
