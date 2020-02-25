@@ -8,6 +8,9 @@ npm install --save-dev svelte-hero-icons
 ```
 
 ## Usage
+Use "Sd" prefix for Outline Icons
+Use "Md" prefix for Solid Icons
+
 
 ```html
     <script>

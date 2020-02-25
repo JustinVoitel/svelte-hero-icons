@@ -1,7 +1,7 @@
 {
    "name": "svelte-hero-icons",
    "version": "0.1.0",
-   "description": "Heroicons for Svelte (Project heaviliy based on svelte-feather-icons by dylanblokhuis & Icons completely based on heroicons by refactoringUI)",
+   "description": "Heroicons for Svelte (Project based on heroicons & svelte-feather-icons)",
    "main": "index.js",
    "module": "index.mjs",
    "svelte": "src/index.js",
