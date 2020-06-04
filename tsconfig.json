@@ -1,18 +1,13 @@
 {
-   "compilerOptions": {
-      "target": "esnext",
-      "module": "commonjs",
-      "lib": [
-         "esnext"
-      ],
-      "rootDir": ".",
-      "strict": false,
-      "esModuleInterop": true,
-      "sourceMap": true,
-      "outDir": "dist"
-   },
-   "include": [
-      "src",
-      "index.ts"
-   ]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "rootDir": ".",
+    "strict": false,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src", "build.ts", "."]
 }

@@ -3,27 +3,28 @@
 ## Install
 
 NPM
+
 ```bash
 npm install --save-dev svelte-hero-icons
 ```
 
 ## Usage
-* Use **Sd** prefix for Outline Icons
-* Use **"Md"** prefix for Solid Icons
 
+- Default is Outline version of icon
+- Use **solid** attribute for Solid Icons
 
 ```html
-    <script>
-        // Only import what you need!
-        import { MdArrowUp, SmFilter, ... } from 'svelte-hero-icons'
-    </script>
-    
-    <MdArrowUp size="24" />
-    <SmFilter size="1.5x" />
+<script>
+  // Only import what you need!
+  import { ArrowUp, Filter, ... } from 'svelte-hero-icons'
+</script>
+
+<ArrowUp size="24" />
+<Filter solid size="1.5x" />
 ```
 
 See all icons here: https://github.com/refactoringui/heroicons
 
 ## Author
 
-This package is based on  [heroicons](https://github.com/refactoringui/heroicons) & [svelte-feather-icons](https://github.com/dylanblokhuis/svelte-feather-icons)
+This package is based on [heroicons](https://github.com/refactoringui/heroicons)

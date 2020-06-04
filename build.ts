@@ -1,18 +1,20 @@
-import { writeFile, createWriteStream, readdirSync, readFileSync, mkdirSync, } from "fs"
-import { join } from "path"
-import { EOL } from "os"
-import pascalcase from "pascalcase"
+import {
+  writeFile,
+  createWriteStream,
+  readdirSync,
+  readFileSync,
+  mkdirSync,
+} from "fs";
+import { join } from "path";
+import { EOL } from "os";
+import pascalcase from "pascalcase";
+import {} from "rollup";
 
-
-
-interface svgElement {
-   name: string
-   data: string
-}
-
-let svgTemplate = `
+const svgTemplate = (outline: string, solid: string) => {
+  return `
 <script>
    export let size = "100%";
+   export let solid = false;
    let customClass = "";
    export { customClass as class };
 
@@ -22,76 +24,90 @@ let svgTemplate = `
          : parseInt(size) + 'px';
    }
 </script>
+   
+{#if solid}
+${solid}
+{:else}
+${outline}
+{/if}`;
+};
 
-`
+let sourceDir: string;
+let outputDir: string;
+let outputDirIcons: string;
+let outputDirExports: string;
+let outputDirTypes: string;
 
-let sourceDir: string
-let outputDir: string
-let outputDirIcons: string
-let outputDirExports: string
-
-let svgArray: svgElement[] = []
+let svgDict = {};
 
 function main() {
-   sourceDir = "./heroicons/dist"
-   outputDir = "./src/"
-   outputDirIcons = outputDir + "/icons"
-   outputDirExports = outputDir + "/index.js"
+  sourceDir = "./node_modules/heroicons";
+  outputDir = "./src/";
+  outputDirIcons = outputDir + "/icons";
+  outputDirExports = outputDir + "/index.js";
+  outputDirTypes = "./index.d.ts";
 
-   mkdirSync(outputDirIcons, { recursive: true })
-   svgArray = getNameArray();
+  mkdirSync(outputDirIcons, { recursive: true });
+  getIconsFromDir("outline");
+  getIconsFromDir("solid");
 
-   generateExportsFile()
-   generateSvelteIcons()
+  generateExportsFile();
+  generateSvelteIcons();
+  generateFileTypes();
 }
 
-function flattenDeep(arr1: any): any[] {
-   return arr1.reduce((acc: any, val: any) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+function generateFileTypes() {
+  const logger = createWriteStream(outputDirTypes, { flags: "a" });
+  Object.keys(svgDict).forEach((name) => {
+    logger.write(`export const ${name}: any;`);
+    logger.write(EOL);
+  });
+  logger.end();
 }
 
-function getNameArray(): svgElement[] {
-   let a = readdirSync(sourceDir).map(svgFolder => {
-      return readdirSync(join(sourceDir, svgFolder)).map(svgFile => ({
-         name: pascalcase(svgFile.replace(".svg", "")),
-         data: readFileSync(join(sourceDir, svgFolder, svgFile)).toString()
-      }))
-   })
-   return flattenDeep(a);
+function getIconsFromDir(dir: string) {
+  readdirSync(join(sourceDir, dir)).forEach((fileName) => {
+    const key = pascalcase(fileName.replace(".svg", ""));
+    const data = readFileSync(join(sourceDir, dir, fileName)).toString();
+    if (!svgDict[key]) {
+      svgDict[key] = {};
+    }
+    svgDict[key][dir] = data;
+  });
 }
-
-
 
 function generateExportsFile() {
-   const logger = createWriteStream(outputDirExports, { flags: "a" })
-   getNameArray().forEach(({ name }) => {
-      logger.write(`export { default as ${name} } from './icons/${name}.svelte'`)
-      logger.write(EOL)
-   })
-   logger.end()
+  const logger = createWriteStream(outputDirExports, { flags: "a" });
+  Object.keys(svgDict).forEach((name) => {
+    logger.write(`export { default as ${name} } from './icons/${name}.svelte'`);
+    logger.write(EOL);
+  });
+  logger.end();
 }
 
 function generateSvelteIcons() {
-   svgArray.forEach(element => {
-      writeToSvelteFile(element.name, element.data)
-   })
+  Object.entries(svgDict).forEach(([name, data]) => {
+    writeFile(
+      outputDirIcons + "/" + name + ".svelte",
+      getConvertedSvelteData(data),
+      (err: any) => {
+        if (err) throw new Error(err);
+      }
+    );
+  });
 }
 
+function getConvertedSvelteData(data: any): string {
+  const outlineStr =
+    data.outline.substring(0, 4) +
+    " width={size} height={size} class='hero {customClass}'" +
+    data.outline.substring(4);
 
-
-function writeToSvelteFile(name: string, data: string) {
-   writeFile(getSvelteFileUrl(name), getConvertedSvelteData(data), (err: any) => {
-      if (err) throw new Error(err)
-   })
+  const solidStr =
+    data.solid.substring(0, 4) +
+    " width={size} height={size} class='hero {customClass}'" +
+    data.solid.substring(4);
+  return svgTemplate(outlineStr, solidStr);
 }
 
-function getSvelteFileUrl(name: string): string {
-   return outputDirIcons + "/" + name + ".svelte"
-}
-
-
-function getConvertedSvelteData(data: string): string {
-   const str = data.substring(0, 4) + " width={size} height={size} class='hero {customClass}'" + data.substring(4)
-   return svgTemplate + str
-}
-
-main()
+main();
