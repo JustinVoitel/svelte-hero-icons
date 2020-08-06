@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "main": "index.js",
   "module": "index.mjs",
@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.0.10",
-    "heroicons": "^0.3.6",
+    "heroicons": "tailwindlabs/heroicons#master",
     "pascalcase": "^1.0.0",
     "rollup": "^2.13.1",
     "rollup-plugin-node-resolve": "^5.2.0",

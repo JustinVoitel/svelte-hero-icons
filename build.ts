@@ -89,7 +89,7 @@ function generateSvelteIcons() {
   Object.entries(svgDict).forEach(([name, data]) => {
     writeFile(
       outputDirIcons + "/" + name + ".svelte",
-      getConvertedSvelteData(data),
+      getConvertedSvelteData(data, name),
       (err: any) => {
         if (err) throw new Error(err);
       }
@@ -97,17 +97,33 @@ function generateSvelteIcons() {
   });
 }
 
-function getConvertedSvelteData(data: any): string {
-  const outlineStr =
-    data.outline.substring(0, 4) +
-    " width={size} height={size} class='hero {customClass}'" +
-    data.outline.substring(4);
+function getConvertedSvelteData(data: any, name: string): string {
+  //console.log(data);
+  let outlineStr = transformIconData("solid", "outline", data);
+  let solidStr = transformIconData("outline", "solid", data);
 
-  const solidStr =
-    data.solid.substring(0, 4) +
-    " width={size} height={size} class='hero {customClass}'" +
-    data.solid.substring(4);
   return svgTemplate(outlineStr, solidStr);
+}
+
+function transformIconData(
+  format: string,
+  fallback: string,
+  data: any
+): string {
+  let output = "";
+
+  if (data[format]) {
+    output =
+      data[format].substring(0, 4) +
+      " width={size} height={size} class='hero {customClass}'" +
+      data[format].substring(4);
+  } else if (data[fallback]) {
+    output =
+      data[fallback].substring(0, 4) +
+      " width={size} height={size} class='hero {customClass}'" +
+      data[fallback].substring(4);
+  }
+  return output;
 }
 
 main();
