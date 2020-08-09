@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "main": "index.js",
   "module": "index.mjs",

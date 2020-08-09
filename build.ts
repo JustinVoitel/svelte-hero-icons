@@ -99,8 +99,8 @@ function generateSvelteIcons() {
 
 function getConvertedSvelteData(data: any, name: string): string {
   //console.log(data);
-  let outlineStr = transformIconData("solid", "outline", data);
-  let solidStr = transformIconData("outline", "solid", data);
+  let outlineStr = transformIconData("outline", "solid", data);
+  let solidStr = transformIconData("solid", "outline", data);
 
   return svgTemplate(outlineStr, solidStr);
 }
