@@ -115,12 +115,12 @@ function transformIconData(
   if (data[format]) {
     output =
       data[format].substring(0, 4) +
-      " width={size} height={size} class='hero {customClass}'" +
+      ` width={size} height={size} class='hero ${format} {customClass}'` +
       data[format].substring(4);
   } else if (data[fallback]) {
     output =
       data[fallback].substring(0, 4) +
-      " width={size} height={size} class='hero {customClass}'" +
+      ` width={size} height={size} class='hero ${fallback} {customClass}'` +
       data[fallback].substring(4);
   }
   return output;
