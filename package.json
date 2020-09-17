@@ -5,6 +5,10 @@
   "main": "index.js",
   "module": "index.mjs",
   "svelte": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JustinVoitel/svelte-hero-icons"
+  },
   "files": [
     "src",
     "index.mjs",
