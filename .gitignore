@@ -1,6 +1,4 @@
 /node_modules/
-/src
-/index.js
-/index.mjs
-/index.d.ts
+**/src
+**/dist
 package-lock.json

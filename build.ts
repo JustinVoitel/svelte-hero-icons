@@ -45,8 +45,9 @@ function main() {
   outputDir = "./src/";
   outputDirIcons = outputDir + "/icons";
   outputDirExports = outputDir + "/index.js";
-  outputDirTypes = "./index.d.ts";
+  outputDirTypes = "./dist/index.d.ts";
 
+  mkdirSync("dist");
   mkdirSync(outputDirIcons, { recursive: true });
   getIconsFromDir("outline");
   getIconsFromDir("solid");
@@ -58,8 +59,12 @@ function main() {
 
 function generateFileTypes() {
   const logger = createWriteStream(outputDirTypes, { flags: "a" });
+  logger.write("import type { SvelteComponentTyped } from 'svelte' \n");
+
   Object.keys(svgDict).forEach((name) => {
-    logger.write(`export const ${name}: any;`);
+    logger.write(
+      `export class ${name} extends SvelteComponentTyped<{size?: string,solid?: boolean, class?:string}> {}`
+    );
     logger.write(EOL);
   });
   logger.end();

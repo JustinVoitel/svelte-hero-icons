@@ -1,39 +1,35 @@
 {
   "name": "svelte-hero-icons",
-  "version": "1.0.5",
+  "version": "1.3.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
-  "main": "index.js",
-  "module": "index.mjs",
-  "svelte": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/JustinVoitel/svelte-hero-icons"
   },
   "files": [
-    "src",
-    "index.mjs",
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "build:icons": "npm run clean && ts-node build.ts",
     "build:dist": "rollup -c",
     "build": "npm run build:icons && npm run build:dist",
-    "clean": "rm -rf src && rm -rf index.js && rm -rf index.mjs && rm -rf index.d.ts"
+    "clean": "rm -rf src && rm -rf dist"
   },
   "author": "Justin Voitel <justin.voitel@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.0.10",
-    "heroicons": "github:tailwindlabs/heroicons#master",
+    "heroicons": "^0.4.2",
     "pascalcase": "^1.0.0",
     "rollup": "^2.13.1",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-svelte": "^5.1.1",
-    "rollup-plugin-terser": "^6.1.0",
-    "svelte": "^3.19.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.2"
-  },
-  "dependencies": {}
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.32.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  }
 }
