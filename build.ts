@@ -8,7 +8,6 @@ import {
 import { join } from "path";
 import { EOL } from "os";
 import pascalcase from "pascalcase";
-import {} from "rollup";
 
 const svgTemplate = (outline: string, solid: string) => {
   return `
@@ -45,9 +44,10 @@ function main() {
   outputDir = "./src/";
   outputDirIcons = outputDir + "/icons";
   outputDirExports = outputDir + "/index.js";
-  outputDirTypes = "./dist/index.d.ts";
+  outputDirTypes = "./types/index.d.ts";
 
   mkdirSync("dist");
+  mkdirSync("types");
   mkdirSync(outputDirIcons, { recursive: true });
   getIconsFromDir("outline");
   getIconsFromDir("solid");
