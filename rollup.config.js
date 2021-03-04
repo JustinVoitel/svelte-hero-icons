@@ -8,14 +8,13 @@ export default [
   {
     input: "src/index.js",
     output: [
-      { file: pkg.module, format: "es", sourcemap: true },
+      { file: "dist/index.mjs", format: "es" },
       {
-        file: pkg.main,
+        file: "dist/index.js",
         format: "umd",
         name: "Heroicons",
-        sourcemap: true,
       },
     ],
-    plugins: [resolve(), svelte(), terser()],
+    plugins: [resolve(), svelte()],
   },
 ];

@@ -44,10 +44,9 @@ function main() {
   outputDir = "./src/";
   outputDirIcons = outputDir + "/icons";
   outputDirExports = outputDir + "/index.js";
-  outputDirTypes = "./types/index.d.ts";
+  outputDirTypes = "./dist/index.d.ts";
 
   mkdirSync("dist");
-  mkdirSync("types");
   mkdirSync(outputDirIcons, { recursive: true });
   getIconsFromDir("outline");
   getIconsFromDir("solid");

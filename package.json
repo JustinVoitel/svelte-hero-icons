@@ -1,24 +1,27 @@
 {
   "name": "svelte-hero-icons",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "svelte": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/JustinVoitel/svelte-hero-icons"
   },
   "files": [
-    "src",
     "dist",
-    "types"
+    "src"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build:icons": "npm run clean && ts-node build.ts",
     "build:dist": "rollup -c",
     "build": "npm run build:icons && npm run build:dist",
-    "clean": "rm -rf src dist types"
+    "clean": "rm -rf src dist"
   },
   "author": "Justin Voitel <justin.voitel@gmail.com>",
   "license": "MIT",
