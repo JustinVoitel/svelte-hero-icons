@@ -6,7 +6,7 @@ import pkg from "./package.json";
 
 export default [
   {
-    input: "src/index.js",
+    input: "index.js",
     output: [
       { file: "dist/index.mjs", format: "es" },
       {

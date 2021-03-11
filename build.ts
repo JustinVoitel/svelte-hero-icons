@@ -41,12 +41,11 @@ let svgDict = {};
 
 function main() {
   sourceDir = "./node_modules/heroicons";
-  outputDir = "./src/";
+  outputDir = ".";
   outputDirIcons = outputDir + "/icons";
-  outputDirExports = outputDir + "/index.js";
-  outputDirTypes = "./dist/index.d.ts";
+  outputDirExports = outputDir + "/index.mjs";
+  outputDirTypes = "./index.d.ts";
 
-  mkdirSync("dist");
   mkdirSync(outputDirIcons, { recursive: true });
   getIconsFromDir("outline");
   getIconsFromDir("solid");
