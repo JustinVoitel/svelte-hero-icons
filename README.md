@@ -23,6 +23,18 @@ npm install --save-dev svelte-hero-icons
 <Filter solid size="1.5x" />
 ```
 
+### For Vitejs/Kit Users
+Add this to your vite.config.js
+```js
+//vite.config.js
+export default {
+  ssr: {
+      noExternal: ["svelte-hero-icons"],
+  },
+  ...
+}
+```
+
 See all icons here: https://github.com/refactoringui/heroicons
 
 ## Author
