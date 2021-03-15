@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/node": "^14.0.10",
     "heroicons": "^0.4.2",
+    "html-parse-stringify": "^2.0.0",
     "pascalcase": "^1.0.0",
     "rollup": "^2.13.1",
     "rollup-plugin-commonjs": "^10.1.0",
