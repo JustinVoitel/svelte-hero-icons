@@ -18,8 +18,8 @@ const svgTemplate = (outline: string, solid: string) => {
    export { customClass as class };
 
    if (size !== "100%") {
-   size = size.slice(-1) === 'x' 
-         ? size.slice(0, size.length -1) + 'em'
+      size = size.slice(-1) === 'x' || size.slice(-1) === 'm'
+         ?  size
          : parseInt(size) + 'px';
    }
 </script>
