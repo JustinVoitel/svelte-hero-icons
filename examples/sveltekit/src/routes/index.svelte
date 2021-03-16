@@ -11,7 +11,7 @@
   <Icon src="AcademicCap" size="100" {solid} />
   <Icon src="LightBulb" size="100" />
   <Icon {src} size="100" {solid} />
-  <!-- <IconTs {src} /> -->
+
   <input type="checkbox" bind:checked={solid} />
   <input bind:value={src} />
 

@@ -11,19 +11,16 @@ import pascalcase from "pascalcase";
 import { parse } from "html-parse-stringify";
 
 let sourceDir: string;
-let outputDir: string;
 let outputIconset: string;
-let outputDirTypes: string;
+let outputTypes: string;
 
 let svgDict = {};
 
 function main() {
   sourceDir = "./node_modules/heroicons";
-  outputDir = "./dist";
-  outputIconset = outputDir + "/heroicons";
-  outputDirTypes = outputDir + "/iconsets.d.ts";
+  outputIconset = "./src/heroicons";
+  outputTypes = "./types/iconsets.d.ts";
 
-  mkdirSync(outputDir, { recursive: true });
   mkdirSync(outputIconset, { recursive: true });
   getIconsFromDir("solid");
   getIconsFromDir("outline");
@@ -34,7 +31,7 @@ function main() {
 async function writeSvgDict() {
   Object.keys(svgDict).forEach((name) => {
     writeFile(
-      join(outputIconset, `${name}.json`),
+      join(outputIconset, `hero-${name}.json`),
       JSON.stringify(svgDict[name]),
       (err: any) => {
         if (err) throw new Error(err);
@@ -62,7 +59,7 @@ function getIconsFromDir(dir: "solid" | "outline") {
 }
 
 function generateTypes() {
-  const logger = createWriteStream(outputDirTypes, { flags: "a" });
+  const logger = createWriteStream(outputTypes, { flags: "a" });
 
   const types = Object.keys(svgDict)
     .map((e) => `'${e}'`)

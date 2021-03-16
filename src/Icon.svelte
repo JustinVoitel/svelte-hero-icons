@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   export let src = "LightningBolt";
   export let size = "100%";
   export let solid = false;
@@ -11,15 +12,12 @@
         : parseInt(size) + "px";
   }
   let icon;
-  $: src && importIcon(src);
-
-  async function importIcon(iconSrc) {
-    /* @vite-ignore */
-    let res = await import(
-      "/node_modules/svelte-hero-icons/dist/heroicons/" + iconSrc + ".json"
-    ).then(({ default: res }) => res);
+  onMount(async () => {
+    let res = await import(`./heroicons/hero-${src}.json`).then(
+      ({ default: res }) => res
+    );
     icon = res;
-  }
+  });
 </script>
 
 {#if icon}

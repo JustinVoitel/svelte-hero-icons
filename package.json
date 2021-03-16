@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "2.0.0-beta.6",
+  "version": "2.0.0-beta.9",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "types": "types/index.d.ts",
   "main": "src/Icon.svelte",
@@ -10,7 +10,6 @@
     "url": "https://github.com/JustinVoitel/svelte-hero-icons"
   },
   "files": [
-    "dist",
     "src",
     "types"
   ],
