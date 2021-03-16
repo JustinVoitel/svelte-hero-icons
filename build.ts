@@ -8,125 +8,62 @@ import {
 import { join } from "path";
 import { EOL } from "os";
 import pascalcase from "pascalcase";
-
-const svgTemplate = (outline: string, solid: string) => {
-  return `
-<script>
-   export let size = "100%";
-   export let solid = false;
-   let customClass = "";
-   export { customClass as class };
-
-   if (size !== "100%") {
-      size = size.slice(-1) === 'x' || size.slice(-1) === 'm'
-         ?  size
-         : parseInt(size) + 'px';
-   }
-</script>
-   
-{#if solid}
-${solid}
-{:else}
-${outline}
-{/if}`;
-};
+import { parse } from "html-parse-stringify";
 
 let sourceDir: string;
 let outputDir: string;
-let outputDirIcons: string;
-let outputDirExports: string;
+let outputIconset: string;
 let outputDirTypes: string;
 
 let svgDict = {};
 
 function main() {
   sourceDir = "./node_modules/heroicons";
-  outputDir = ".";
-  outputDirIcons = outputDir + "/icons";
-  outputDirExports = outputDir + "/index.mjs";
-  outputDirTypes = "./index.d.ts";
+  outputDir = "./dist";
+  outputIconset = outputDir + "/iconset.json";
+  outputDirTypes = outputDir + "/iconsets.d.ts";
 
-  mkdirSync(outputDirIcons, { recursive: true });
-  getIconsFromDir("outline");
+  mkdirSync(outputDir, { recursive: true });
   getIconsFromDir("solid");
-
-  generateExportsFile();
-  generateSvelteIcons();
-  generateFileTypes();
+  getIconsFromDir("outline");
+  writeSvgDict();
+  generateTypes();
 }
 
-function generateFileTypes() {
-  const logger = createWriteStream(outputDirTypes, { flags: "a" });
-  logger.write("import type { SvelteComponentTyped } from 'svelte' \n");
-
-  Object.keys(svgDict).forEach((name) => {
-    logger.write(
-      `export class ${name} extends SvelteComponentTyped<{size?: string,solid?: boolean, class?:string}> {}`
-    );
-    logger.write(EOL);
+async function writeSvgDict() {
+  writeFile(outputIconset, JSON.stringify(svgDict), (err: any) => {
+    if (err) throw new Error(err);
   });
-  logger.end();
 }
 
-function getIconsFromDir(dir: string) {
+function getIconsFromDir(dir: "solid" | "outline") {
   readdirSync(join(sourceDir, dir)).forEach((fileName) => {
     const key = pascalcase(fileName.replace(".svg", ""));
     const data = readFileSync(join(sourceDir, dir, fileName)).toString();
+    const pathsAst: Record<string, any>[] = parse(data)[0].children;
     if (!svgDict[key]) {
-      svgDict[key] = {};
+      svgDict[key] = [];
     }
-    svgDict[key][dir] = data;
+    let index = 0;
+    if (dir === "outline") {
+      index = 1;
+    }
+    svgDict[key][index] = pathsAst
+      .filter((e) => e.type != "text")
+      .map((e) => e.attrs);
   });
+  //console.log(svgDict["AcademicCap"]);
 }
 
-function generateExportsFile() {
-  const logger = createWriteStream(outputDirExports, { flags: "a" });
-  Object.keys(svgDict).forEach((name) => {
-    logger.write(`export { default as ${name} } from './icons/${name}.svelte'`);
-    logger.write(EOL);
-  });
+function generateTypes() {
+  const logger = createWriteStream(outputDirTypes, { flags: "a" });
+
+  const types = Object.keys(svgDict)
+    .map((e) => `'${e}'`)
+    .join("|");
+  logger.write(`export type HeroIconset = ${types}`);
+  logger.write(EOL);
   logger.end();
-}
-
-function generateSvelteIcons() {
-  Object.entries(svgDict).forEach(([name, data]) => {
-    writeFile(
-      outputDirIcons + "/" + name + ".svelte",
-      getConvertedSvelteData(data, name),
-      (err: any) => {
-        if (err) throw new Error(err);
-      }
-    );
-  });
-}
-
-function getConvertedSvelteData(data: any, name: string): string {
-  //console.log(data);
-  let outlineStr = transformIconData("outline", "solid", data);
-  let solidStr = transformIconData("solid", "outline", data);
-
-  return svgTemplate(outlineStr, solidStr);
-}
-
-function transformIconData(
-  format: string,
-  fallback: string,
-  data: any
-): string {
-  let output = "";
-
-  if (data[format]) {
-    output =
-      data[format].substring(0, 4) +
-      ` width={size} height={size} class='hero ${format} {customClass}'` +
-      data[format].substring(4);
-  } else if (data[fallback]) {
-    output =
-      data[fallback].substring(0, 4) +
-      ` width={size} height={size} class='hero ${fallback} {customClass}'` +
-      data[fallback].substring(4);
-  }
-  return output;
 }
 
 main();

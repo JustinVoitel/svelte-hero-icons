@@ -1,6 +1,4 @@
 **/node_modules/
-**/src
-**/icons
-**/index.d.ts
-**/index.mjs
 package-lock.json
+**/dist
+**/.DS_Store
