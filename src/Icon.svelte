@@ -16,9 +16,10 @@
   // $: console.log(icon);
 
   async function importIcon(iconSrc) {
-    icon = await import("./../dist/iconset.json").then(
-      (module) => module[iconSrc]
-    );
+    let res = await import(
+      "/node_modules/svelte-hero-icons/dist/heroicons/" + iconSrc + ".json"
+    ).then(({ default: res }) => res);
+    icon = res;
   }
 </script>
 

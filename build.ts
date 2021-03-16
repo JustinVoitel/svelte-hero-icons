@@ -20,10 +20,11 @@ let svgDict = {};
 function main() {
   sourceDir = "./node_modules/heroicons";
   outputDir = "./dist";
-  outputIconset = outputDir + "/iconset.json";
+  outputIconset = outputDir + "/heroicons";
   outputDirTypes = outputDir + "/iconsets.d.ts";
 
   mkdirSync(outputDir, { recursive: true });
+  mkdirSync(outputIconset, { recursive: true });
   getIconsFromDir("solid");
   getIconsFromDir("outline");
   writeSvgDict();
@@ -31,8 +32,14 @@ function main() {
 }
 
 async function writeSvgDict() {
-  writeFile(outputIconset, JSON.stringify(svgDict), (err: any) => {
-    if (err) throw new Error(err);
+  Object.keys(svgDict).forEach((name) => {
+    writeFile(
+      join(outputIconset, `${name}.json`),
+      JSON.stringify(svgDict[name]),
+      (err: any) => {
+        if (err) throw new Error(err);
+      }
+    );
   });
 }
 
@@ -52,7 +59,6 @@ function getIconsFromDir(dir: "solid" | "outline") {
       .filter((e) => e.type != "text")
       .map((e) => e.attrs);
   });
-  //console.log(svgDict["AcademicCap"]);
 }
 
 function generateTypes() {
@@ -61,7 +67,7 @@ function generateTypes() {
   const types = Object.keys(svgDict)
     .map((e) => `'${e}'`)
     .join("|");
-  logger.write(`export type HeroIconset = ${types}`);
+  logger.write(`export type HeroiconSet = ${types}`);
   logger.write(EOL);
   logger.end();
 }

@@ -1,25 +1,21 @@
 <script lang="ts">
   import Counter from "$lib/Counter.svelte";
-  import Test from "$lib/Test.svelte";
   import Icon from "svelte-hero-icons";
-  //   import Icon from "svelte-hero-icons";
-  //   import IconTs from "svelte-hero-icons/ts";
+  import type { HeroIconset } from "svelte-hero-icons/dist/iconsets";
 
   let solid = false;
-  let src = "X";
-
-  //  let c = new Test2({ props: {} });
+  let src: HeroIconset = "X";
 </script>
 
 <main>
-  <Icon src="X" size="100" {solid} />
+  <Icon src="AcademicCap" size="100" {solid} />
+  <Icon src="LightBulb" size="100" {solid} />
+  <Icon {src} size="100" {solid} />
   <!-- <IconTs {src} /> -->
   <input type="checkbox" bind:checked={solid} />
   <input bind:value={src} />
 
   <Counter />
-
-  <Test />
 
   <p>
     Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
