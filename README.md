@@ -1,11 +1,13 @@
 # svelte-hero-icons
 
+### Now optimized for [sveltekit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
+
 ## Install
 
 NPM
 
 ```bash
-npm install --save-dev svelte-hero-icons
+npm install svelte-hero-icons
 ```
 
 ## Usage
@@ -16,23 +18,14 @@ npm install --save-dev svelte-hero-icons
 ```html
 <script>
   // Only import what you need!
-  import { ArrowUp, Filter, ... } from 'svelte-hero-icons'
+  import Icon, { ArrowUp, Filter, ... } from 'svelte-hero-icons'
 </script>
 
-<ArrowUp size="24" />
-<Filter solid size="1.5x" />
-```
+<Icon src="{ArrowUp}" size="24" />
+<Icon src="{Filter}" solid size="2rem" />
 
-### For Vitejs/Kit Users
-Add this to your vite.config.js
-```js
-//vite.config.js
-export default {
-  ssr: {
-      noExternal: ["svelte-hero-icons"],
-  },
-  ...
-}
+//use Windi CSS or tailwindcss classes directly
+<Icon src="{Filter}" class="w-6 h-6 text-red-500" />
 ```
 
 See all icons here: https://github.com/refactoringui/heroicons
