@@ -1,5 +1,6 @@
 <script>
-  export let src = [];
+  import { onMount } from "svelte";
+  export let src = "LightningBolt";
   export let size = "100%";
   export let solid = false;
   let customClass = "";
@@ -10,9 +11,17 @@
         ? size
         : parseInt(size) + "px";
   }
+  let icon;
+  onMount(async () => {
+    console.log("mounted");
+    let res = await import(
+      "./../../node_modules/svelte-hero-icons/src/heroicons/hero-AcademicCap.json"
+    ).then(({ default: res }) => res);
+    icon = res;
+  });
 </script>
 
-{#if src && src != []}
+{#if icon}
   {#if solid}
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +31,7 @@
       width={size}
       height={size}
     >
-      {#each src[0] ?? [] as att}
+      {#each icon[0] ?? [] as att}
         <!-- @ts-ignore -->
         <path {...att} />
       {/each}
@@ -37,7 +46,7 @@
       width={size}
       height={size}
     >
-      {#each src[1] ?? [] as att}
+      {#each icon[1] ?? [] as att}
         <!-- @ts-ignore -->
         <path {...att} />
       {/each}

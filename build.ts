@@ -13,25 +13,28 @@ import { parse } from "html-parse-stringify";
 let sourceDir: string;
 let outputIconset: string;
 let outputTypes: string;
+let outputExports: string;
 
 let svgDict = {};
 
 function main() {
   sourceDir = "./node_modules/heroicons";
   outputIconset = "./src/heroicons";
-  outputTypes = "./types/iconsets.d.ts";
+  outputTypes = "./types/index.d.ts";
+  outputExports = "./src/index.js";
 
   mkdirSync(outputIconset, { recursive: true });
   getIconsFromDir("solid");
   getIconsFromDir("outline");
   writeSvgDict();
+  generateExports();
   generateTypes();
 }
 
 async function writeSvgDict() {
   Object.keys(svgDict).forEach((name) => {
     writeFile(
-      join(outputIconset, `hero-${name}.json`),
+      join(outputIconset, `${name}.json`),
       JSON.stringify(svgDict[name]),
       (err: any) => {
         if (err) throw new Error(err);
@@ -61,10 +64,38 @@ function getIconsFromDir(dir: "solid" | "outline") {
 function generateTypes() {
   const logger = createWriteStream(outputTypes, { flags: "a" });
 
+  logger.write(`import { SvelteComponentTyped } from "svelte";
+
+export default class Icon extends SvelteComponentTyped<{
+  src?: any;
+  size?: string;
+  solid?: boolean;
+  class?: string;
+}> {}\n\n
+  `);
+
   const types = Object.keys(svgDict)
-    .map((e) => `'${e}'`)
-    .join("|");
-  logger.write(`export type HeroiconSet = ${types}`);
+    .map(
+      (name) =>
+        `export {default as ${name} } from "./../src/heroicons/${name}.json"`
+    )
+    .join("\n");
+  logger.write(types);
+  logger.end();
+}
+
+function generateExports() {
+  const logger = createWriteStream(outputExports, { flags: "a" });
+  logger.write(`import Icon from "./Icon.svelte"\nexport default Icon`);
+  logger.write(EOL);
+  logger.write(EOL);
+
+  const exports = Object.keys(svgDict)
+    .map(
+      (name) => `export {default as ${name} } from "./heroicons/${name}.json"`
+    )
+    .join("\n");
+  logger.write(exports);
   logger.write(EOL);
   logger.end();
 }

@@ -1,25 +1,22 @@
 <script lang="ts">
-  import Counter from "$lib/Counter.svelte";
+  import logo from "./assets/svelte.png";
+  import Counter from "./lib/Counter.svelte";
   import Icon from "svelte-hero-icons";
-
-  let solid = false;
-  let src: any = "X";
 </script>
 
 <main>
-  <!-- <Icon src="AcademicCap" size="100" {solid} />
-  <Icon src="LightBulb" size="100" />
-  <Icon {src} size="100" {solid} /> -->
-  <Icon size="100" />
-
-  <input type="checkbox" bind:checked={solid} />
-  <input bind:value={src} />
-
-  <Counter />
+  <Icon src="LightningBolt" size="100" />
+  <h1>Hello Typescript!</h1>
+  <Counter id="0" />
 
   <p>
     Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
     apps.
+  </p>
+
+  <p>
+    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
+    the officially supported framework, also powered by Vite!
   </p>
 </main>
 
@@ -35,19 +32,24 @@
     margin: 0 auto;
   }
 
+  img {
+    height: 16rem;
+    width: 16rem;
+  }
+
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
     font-size: 4rem;
     font-weight: 100;
     line-height: 1.1;
-    margin: 4rem auto;
+    margin: 2rem auto;
     max-width: 14rem;
   }
 
   p {
     max-width: 14rem;
-    margin: 2rem auto;
+    margin: 1rem auto;
     line-height: 1.35;
   }
 
