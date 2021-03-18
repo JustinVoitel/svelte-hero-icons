@@ -20,6 +20,7 @@ npm install svelte-hero-icons
   // Only import what you need!
   import Icon, { ArrowUp, Filter, ... } from 'svelte-hero-icons'
 </script>
+
 <!-- use solid attribute to control whether to show solid or outline version of icon -->
 <Icon src="{Filter}" solid />
 
