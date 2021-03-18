@@ -1,6 +1,6 @@
 # svelte-hero-icons
 
-### Now optimized for [sveltekit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
+### Now optimized for [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
 
 ## Install
 
