@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "types": "types/index.d.ts",
   "main": "src/index.js",
