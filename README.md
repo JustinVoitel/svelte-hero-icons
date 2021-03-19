@@ -1,6 +1,16 @@
 # svelte-hero-icons
 
 ### Now optimized for [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
+### Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
+```js
+export default {
+  // other vite config stuff
+  optimizeDeps: {
+    include: ['svelte-hero-icons'],
+  },
+}
+
+```
 
 ## Install
 
