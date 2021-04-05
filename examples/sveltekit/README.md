@@ -1,3 +1,7 @@
+# Use svelte-hero-icons in your SvelteKit projects
+
+- see src/routes/index.svelte for reference
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
