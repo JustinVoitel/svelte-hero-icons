@@ -1,10 +1,11 @@
 {
   "name": "svelte-hero-icons",
-  "version": "2.1.1-beta.1",
+  "version": "2.1.1-beta.2",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "types": "dist/index.d.ts",
-  "main": "dist/index.js",
-  "svelte": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "svelte": "dist/Icon.svelte",
   "repository": {
     "type": "git",
     "url": "https://github.com/JustinVoitel/svelte-hero-icons"
