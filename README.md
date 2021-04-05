@@ -3,7 +3,7 @@
   <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
 </div>
 
-# Description
+## Description
 - complete heroicon set optimized for svelte
 - programatically change solid or outline version based on the `solid` attribute
 - fully typed for a great IDE experience
