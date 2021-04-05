@@ -10,24 +10,21 @@ import { EOL } from "os";
 import pascalcase from "pascalcase";
 import { parse } from "html-parse-stringify";
 
-let sourceDir: string;
-let outputIconset: string;
-let outputTypes: string;
-let outputExports: string;
+let sourceDir: string = "./node_modules/heroicons";
+let outputIconset: string = "./src/heroicons";
+let outputTypes: string = "./types/index.d.ts";
+let outputExportsModule: string = "./src/index.js";
+let outputExportsCommon: string = "./src/index.cjs";
 
 let svgDict = {};
 
 function main() {
-  sourceDir = "./node_modules/heroicons";
-  outputIconset = "./src/heroicons";
-  outputTypes = "./types/index.d.ts";
-  outputExports = "./src/index.js";
-
   mkdirSync(outputIconset, { recursive: true });
   getIconsFromDir("solid");
   getIconsFromDir("outline");
   writeSvgDict();
-  generateExports();
+  generateExportsModule();
+  generateExportsCommon();
   generateTypes();
 }
 
@@ -84,8 +81,8 @@ export default class Icon extends SvelteComponentTyped<{
   logger.end();
 }
 
-function generateExports() {
-  const logger = createWriteStream(outputExports, { flags: "a" });
+function generateExportsModule() {
+  const logger = createWriteStream(outputExportsModule, { flags: "a" });
   logger.write(`import Icon from "./Icon.svelte"\nexport default Icon`);
   logger.write(EOL);
   logger.write(EOL);
@@ -93,6 +90,22 @@ function generateExports() {
   const exports = Object.keys(svgDict)
     .map(
       (name) => `export {default as ${name} } from "./heroicons/${name}.json"`
+    )
+    .join("\n");
+  logger.write(exports);
+  logger.write(EOL);
+  logger.end();
+}
+
+function generateExportsCommon() {
+  const logger = createWriteStream(outputExportsCommon, { flags: "a" });
+  logger.write(`module.exports.default = require("./Icon.svelte")`);
+  logger.write(EOL);
+  logger.write(EOL);
+
+  const exports = Object.keys(svgDict)
+    .map(
+      (name) => `module.exports.${name} = require("./heroicons/${name}.json")`
     )
     .join("\n");
   logger.write(exports);

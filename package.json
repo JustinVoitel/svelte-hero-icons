@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "types": "types/index.d.ts",
   "main": "src/index.js",
@@ -14,13 +14,16 @@
     "types"
   ],
   "exports": {
-    ".": "./src/index.js",
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.cjs"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {
     "dev": "",
-    "build:icons": "npm run clean && ts-node build.ts",
-    "build": "npm run build:icons",
+    "build:icons": "ts-node build.ts",
+    "build": "npm run clean && npm run build:icons",
     "clean": "rm -rf src/heroicons src/index.js types/index.d.ts ",
     "test": "ts-node test/index.ts",
     "prepublishOnly": "npm run build"
@@ -29,7 +32,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.0.10",
-    "heroicons": "^0.4.2",
+    "heroicons": "^1.0.0",
     "html-parse-stringify": "^2.0.0",
     "pascalcase": "^1.0.0",
     "svelte": "^3.35.0",
