@@ -1,6 +1,16 @@
 # svelte-hero-icons
 
-### Now optimized for [sveltekit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
+### Now optimized for [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
+- Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
+```js
+export default {
+  // other vite config stuff
+  optimizeDeps: {
+    include: ['svelte-hero-icons'],
+  },
+}
+
+```
 
 ## Install
 
@@ -21,10 +31,13 @@ npm install svelte-hero-icons
   import Icon, { ArrowUp, Filter, ... } from 'svelte-hero-icons'
 </script>
 
-<Icon src="{ArrowUp}" size="24" />
-<Icon src="{Filter}" solid size="2rem" />
+<!-- use solid attribute to control whether to show solid or outline version of icon -->
+<Icon src="{Filter}" solid />
 
-//use Windi CSS or tailwindcss classes directly
+<!-- use size attribute to set icon size (32 -> 32px | 2rem | 100% == default ) -->
+<Icon src="{ArrowUp}" size="32" />
+
+<!-- use Windi CSS or tailwindcss classes directly -->
 <Icon src="{Filter}" class="w-6 h-6 text-red-500" />
 ```
 
