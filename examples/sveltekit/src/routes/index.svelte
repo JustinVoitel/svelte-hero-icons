@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
-	import Icon, { Home } from 'svelte-hero-icons';
+	import Icon, { AcademicCap, Home } from 'svelte-hero-icons';
 </script>
 
 <main>
-	<Icon src={Home} size="24" />
+	<Icon src={Home} size="24" solid />
+	<Icon src={AcademicCap} size="24" />
 	<h1>Hello world!</h1>
 
 	<Counter />

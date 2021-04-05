@@ -11,21 +11,30 @@ import pascalcase from "pascalcase";
 import { parse } from "html-parse-stringify";
 
 let sourceDir: string = "./node_modules/heroicons";
-let outputIconset: string = "./src/heroicons";
-let outputTypes: string = "./types/index.d.ts";
-let outputExportsModule: string = "./src/index.js";
-let outputExportsCommon: string = "./src/index.cjs";
+let outputIconset: string = "./dist/heroicons";
+let outputIconComponent: string = "./dist/Icon.svelte";
+let outputTypes: string = "./dist/index.d.ts";
+let outputExportsModule: string = "./dist/index.js";
+let outputExportsCommon: string = "./dist/index.cjs";
 
 let svgDict = {};
 
 function main() {
   mkdirSync(outputIconset, { recursive: true });
+  copyComponent();
   getIconsFromDir("solid");
   getIconsFromDir("outline");
   writeSvgDict();
   generateExportsModule();
   generateExportsCommon();
   generateTypes();
+}
+
+function copyComponent() {
+  const iconComponent = readFileSync("./src/Icon.svelte");
+  writeFile(outputIconComponent, iconComponent, (err: any) => {
+    if (err) throw new Error(err);
+  });
 }
 
 async function writeSvgDict() {
@@ -59,25 +68,15 @@ function getIconsFromDir(dir: "solid" | "outline") {
 }
 
 function generateTypes() {
-  const logger = createWriteStream(outputTypes, { flags: "a" });
-
-  logger.write(`import { SvelteComponentTyped } from "svelte";
-
-export default class Icon extends SvelteComponentTyped<{
-  src?: any;
-  size?: string;
-  solid?: boolean;
-  class?: string;
-}> {}\n\n
-  `);
-
+  let typeTemplate = readFileSync("./types/index.d.ts").toString();
   const types = Object.keys(svgDict)
     .map(
-      (name) =>
-        `export {default as ${name} } from "./../src/heroicons/${name}.json"`
+      (name) => `export {default as ${name} } from "./heroicons/${name}.json"`
     )
     .join("\n");
-  logger.write(types);
+  typeTemplate = typeTemplate.replaceAll("//&&TYPEEXPORTS&&", types);
+  const logger = createWriteStream(outputTypes, { flags: "a" });
+  logger.write(typeTemplate);
   logger.end();
 }
 
