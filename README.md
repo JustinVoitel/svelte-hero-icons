@@ -1,16 +1,13 @@
-# svelte-hero-icons
+<div align="center">
+  <h1>Svelte Heroicons</h1>
+  <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
+</div>
 
-### Now optimized for [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite) Applications and fully typed
-- Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
-```js
-export default {
-  // other vite config stuff
-  optimizeDeps: {
-    include: ['svelte-hero-icons'],
-  },
-}
-
-```
+# Description
+- complete heroicon set optimized for svelte
+- programatically change solid or outline version based on the `solid` attribute
+- fully typed for a great IDE experience
+- works with SvelteKit & Vite
 
 ## Install
 
@@ -20,6 +17,18 @@ NPM
 npm install svelte-hero-icons
 ```
 
+## Configuration
+### [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite)
+- install as `dependency` (important)
+- Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
+```js
+export default {
+  // other vite config stuff
+  optimizeDeps: {
+    include: ['svelte-hero-icons'],
+  },
+}
+```
 ## Usage
 
 - Default is Outline version of icon
