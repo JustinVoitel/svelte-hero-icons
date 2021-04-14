@@ -5,10 +5,17 @@
   let customClass = "";
   export { customClass as class };
   if (size !== "100%") {
-    size =
-      size.slice(-1) === "x" || size.slice(-1) === "m"
-        ? size
-        : parseInt(size) + "px";
+    if (
+      size.slice(-1) != "x" &&
+      size.slice(-1) != "m" &&
+      size.slice(-1) != "%"
+    ) {
+      try {
+        size = parseInt(size) + "px";
+      } catch (error) {
+        size = "100%";
+      }
+    }
   }
 </script>
 
