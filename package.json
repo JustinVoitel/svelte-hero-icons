@@ -20,6 +20,9 @@
     },
     "./package.json": "./package.json"
   },
+   "engines": {
+    "node": ">=14.0.0",
+  },
   "scripts": {
     "dev": "",
     "build:icons": "ts-node src/build.ts",
