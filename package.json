@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "2.2.0-beta.0",
+  "version": "2.2.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "types": "dist/index.d.ts",
   "main": "dist/index.cjs",
@@ -20,8 +20,8 @@
     },
     "./package.json": "./package.json"
   },
-   "engines": {
-    "node": ">=14.0.0",
+  "engines": {
+    "node": ">=14.0.0"
   },
   "scripts": {
     "dev": "",
