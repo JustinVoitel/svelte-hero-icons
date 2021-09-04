@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "next",
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "@types/node": "^16.7.10",
     "heroicons": "^1.0.4",
