@@ -14,8 +14,8 @@
     "preview": "svelte-kit preview",
     "build:icons": "npm run clean && node --loader ts-node/esm build.ts",
     "clean": "rm -rf src/lib/heroicons src/lib/index.js",
-    "publish": "npm run package && cd package && npm publish",
-    "publish:beta": "npm run package && cd package && npm publish --tag beta"
+    "publish:beta": "npm run package && cd package && npm publish --tag beta",
+    "publish": "npm run package && cd package && npm publish"
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "next",
