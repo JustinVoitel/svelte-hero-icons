@@ -4,6 +4,8 @@
   export let solid = false;
   let customClass = "";
   export { customClass as class };
+  export let ariaHidden = false;
+
   if (size !== "100%") {
     if (
       size.slice(-1) != "x" &&
@@ -26,6 +28,7 @@
       viewBox="0 0 20 20"
       fill="currentColor"
       class="heroicon solid {customClass}"
+      aria-hidden={ariaHidden}
       width={size}
       height={size}
     >
@@ -41,6 +44,7 @@
       viewBox="0 0 24 24"
       stroke="currentColor"
       class="heroicon outline {customClass}"
+      aria-hidden={ariaHidden}
       width={size}
       height={size}
     >

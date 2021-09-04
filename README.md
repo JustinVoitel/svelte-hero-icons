@@ -3,7 +3,12 @@
   <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
 </div>
 
+## !!!WARNING!!!
+
+With version 3.0.0 , this package is primarily meant for SvelteKit projects and it is not guaranteed to work with other build systems!
+
 ## Description
+
 - complete heroicon set optimized for svelte
 - programatically change solid or outline version based on the `solid` attribute
 - fully typed for a great IDE experience
@@ -18,17 +23,28 @@ npm install svelte-hero-icons
 ```
 
 ## Configuration
+
 ### [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite)
+
 - install as `dependency` (important)
 - Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
+
 ```js
-export default {
-  // other vite config stuff
-  optimizeDeps: {
-    include: ['svelte-hero-icons'],
+const config = {
+  // other vite-plugin-svelte config
+  kit: {
+    // other svelte-kit config
+    vite: {
+      // other vite config
+      optimizeDeps: {
+        include: ["svelte-hero-icons"],
+      },
+    },
   },
-}
+};
+export default config;
 ```
+
 ## Usage
 
 - Default is Outline version of icon
@@ -37,7 +53,10 @@ export default {
 ```html
 <script>
   // Only import what you need!
-  import Icon, { ArrowUp, Filter, ... } from 'svelte-hero-icons'
+  import { ArrowUp, Filter, ... } from 'svelte-hero-icons'
+
+  // For now you have to import the icon component like this:
+  import Icon from 'svelte-hero-icons/Icon.svelte'
 </script>
 
 <!-- use solid attribute to control whether to show solid or outline version of icon -->
