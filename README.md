@@ -71,6 +71,24 @@ export default config;
 
 See all icons here: https://github.com/refactoringui/heroicons
 
+## Known Problems
+### Windows
+If you are developing with Windows you might need to prevent the dependency from being externalized for SSR:
+```js
+const config = {
+    // ...
+    kit: {
+        // ...
+        vite: {
+            // ...
+            ssr: {
+                noExternal: ['svelte-hero-icons']
+            }
+        }
+    }
+}
+```
+
 ## Author
 
 This package is based on [heroicons](https://github.com/refactoringui/heroicons)
