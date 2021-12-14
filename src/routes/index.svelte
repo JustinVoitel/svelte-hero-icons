@@ -8,4 +8,4 @@
   Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
 </p>
 
-<Icon src={Annotation} size="100" solid />
+<Icon src={Annotation} />
