@@ -40,7 +40,7 @@ function getIconsFromDir(dir: "solid" | "outline") {
   readdirSync(join(sourceDir, dir)).forEach((fileName) => {
     const key = pascalcase(fileName.replace(".svg", ""));
     const data = readFileSync(join(sourceDir, dir, fileName)).toString();
-    const pathsAst: Record<string, any>[] = parse(data)[0].children;
+    const pathsAst: Record<string, any>[] = (parse(data)[0] as any).children;
     if (!svgDict[key]) {
       svgDict[key] = [];
     }
@@ -56,11 +56,12 @@ function getIconsFromDir(dir: "solid" | "outline") {
 
 function generateExportsModule() {
   const logger = createWriteStream(outputExportsModule, { flags: "a" });
-  const exports = Object.keys(svgDict)
+  let exports = Object.keys(svgDict)
     .map(
-      (name) => `export {default as ${name} } from "./heroicons/${name}.json"`
+      (name) => `export {default as ${name}} from "./heroicons/${name}.json"`
     )
     .join("\n");
+  exports += `\nexport {default as Icon} from "./Icon.svelte"\n`;
   logger.write(exports);
   logger.write(EOL);
   logger.end();

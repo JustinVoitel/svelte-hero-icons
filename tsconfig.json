@@ -24,7 +24,9 @@
     "checkJs": true,
     "paths": {
       "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "$lib/*": ["src/lib/*"],
+      // "svelte-hero-icons": ["src/lib/index.js"],
+      // "svelte-hero-icons/*": ["src/lib/*"]
     }
   },
   "include": [

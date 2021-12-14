@@ -16,6 +16,8 @@ With version 3.0.0 , this package is primarily meant for SvelteKit projects and 
 
 ## Install
 
+- install as `dependency` (important)
+
 NPM
 
 ```bash
@@ -26,16 +28,18 @@ npm install svelte-hero-icons
 
 ### [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite)
 
-- install as `dependency` (important)
 - Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
 
 ```js
 const config = {
-  // other vite-plugin-svelte config
   kit: {
-    // other svelte-kit config
     vite: {
-      // other vite config
+      //!IMPORTANT so the icon data can be imported (as JSON)
+      ssr: {
+        noExternal: ["svelte-hero-icons"],
+      },
+
+      // no import waterfalls in development
       optimizeDeps: {
         include: ["svelte-hero-icons"],
       },
@@ -53,10 +57,7 @@ export default config;
 ```html
 <script>
   // Only import what you need!
-  import { ArrowUp, Filter, ... } from 'svelte-hero-icons'
-
-  // For now you have to import the icon component like this:
-  import Icon from 'svelte-hero-icons/Icon.svelte'
+  import { Icon, ArrowUp, Filter } from "svelte-hero-icons";
 </script>
 
 <!-- use solid attribute to control whether to show solid or outline version of icon -->
@@ -66,27 +67,30 @@ export default config;
 <Icon src="{ArrowUp}" size="32" />
 
 <!-- use Windi CSS or tailwindcss classes directly -->
-<Icon src="{Filter}" class="w-6 h-6 text-red-500" />
+<Icon src="{Filter}" class="h-6 text-red-500 w-6" />
 ```
 
 See all icons here: https://github.com/refactoringui/heroicons
 
 ## Known Problems
-### Windows
-If you are developing with Windows you might need to prevent the dependency from being externalized for SSR:
+
+### Windows & pnpm
+
+If you are developing with Windows or pnpm you need to prevent the dependency from being externalized for SSR:
+
 ```js
 const config = {
+  // ...
+  kit: {
     // ...
-    kit: {
-        // ...
-        vite: {
-            // ...
-            ssr: {
-                noExternal: ['svelte-hero-icons']
-            }
-        }
-    }
-}
+    vite: {
+      // ...
+      ssr: {
+        noExternal: ["svelte-hero-icons"],
+      },
+    },
+  },
+};
 ```
 
 ## Author

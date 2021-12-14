@@ -1,6 +1,7 @@
 import preprocess from "svelte-preprocess";
 import node from "@sveltejs/adapter-node";
-import vercel from "@sveltejs/adapter-vercel";
+// import vercel from "@sveltejs/adapter-vercel";
+import path from "path";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,9 +14,26 @@ const config = {
     // hydrate the <div id="svelte"> element in src/app.html
     target: "#svelte",
     adapter: node(),
+    package: {
+      exports: (file) => file === "index.js" || file === "Icon.svelte",
+      // files: (file) => !file.startsWith("internal"), //exclude internal Components
+    },
     vite: {
+      // server: {
+      //   fs: {
+      //     allow: ["package", "package.json"],
+      //   },
+      // },
+      // resolve: {
+      //   alias: {
+      //     "svelte-hero-icons": path.resolve("package"),
+      //   },
+      // },
       optimizeDeps: {
         include: ["svelte-hero-icons"],
+      },
+      ssr: {
+        noExternal: ["svelte-hero-icons"],
       },
     },
   },

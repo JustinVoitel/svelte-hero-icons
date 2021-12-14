@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "files": [
     "heroicons",
     "*.svelte",
@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
-    "package": "npm run build:icons && svelte-kit package",
+    "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "build:icons": "npm run clean && node --loader ts-node/esm build.ts",
     "clean": "rm -rf src/lib/heroicons src/lib/index.js",
@@ -35,6 +35,6 @@
   },
   "type": "module",
   "dependencies": {
-    "svelte-hero-icons": "^3.0.0-beta.3"
+    "svelte-hero-icons": "^3.1.0"
   }
 }
