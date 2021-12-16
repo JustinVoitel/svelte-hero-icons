@@ -1,6 +1,16 @@
 {
   "name": "svelte-hero-icons",
-  "version": "3.1.1",
+  "version": "3.1.2",
+  "description": "Heroicons for Svelte (Project based on heroicons)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JustinVoitel/svelte-hero-icons"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "Justin Voitel <mail@justinv.me>",
+  "license": "MIT",
   "files": [
     "heroicons",
     "*.svelte",
@@ -35,6 +45,6 @@
   },
   "type": "module",
   "dependencies": {
-    "svelte-hero-icons": "^3.1.0"
+    "svelte-hero-icons": "^3.1.2"
   }
 }
