@@ -3,9 +3,9 @@
   <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
 </div>
 
-## !!!WARNING!!!
+## Info
 
-With version 3.0.0 , this package is primarily meant for SvelteKit projects and it is not guaranteed to work with other build systems!
+Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) to use more Icons in your projects
 
 ## Description
 
