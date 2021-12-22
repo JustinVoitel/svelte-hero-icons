@@ -26,7 +26,7 @@
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      class="heroicon solid {customClass}"
+      class="{customClass}"
       aria-hidden={ariaHidden}
       width={size}
       height={size}
@@ -43,7 +43,7 @@
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      class="heroicon outline {customClass}"
+      class="{customClass}"
       aria-hidden={ariaHidden}
       width={size}
       height={size}
