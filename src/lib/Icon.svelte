@@ -4,7 +4,6 @@
   export let solid = false;
   let customClass = "";
   export { customClass as class };
-  export let ariaHidden = false;
   if (size !== "100%") {
     if (
       size.slice(-1) != "x" &&
@@ -24,10 +23,9 @@
   {#if solid}
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
       fill="currentColor"
-      class="heroicon solid {customClass}"
-      aria-hidden={ariaHidden}
+      viewBox="0 0 20 20"
+      class={customClass}
       width={size}
       height={size}
       {...$$restProps}
@@ -44,9 +42,9 @@
       viewBox="0 0 24 24"
       stroke="currentColor"
       class={customClass}
-      aria-hidden={ariaHidden}
       width={size}
       height={size}
+      {...$$restProps}
     >
       {#each src[1] ?? [] as att}
         <!-- @ts-ignore -->
