@@ -20,7 +20,7 @@ Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant 
 - works out of the box with SvelteKit
 - SSR compatible (no JS is needed for the client to display the icon)
 
-## Install
+## Installation
 
 - install as `devDependency`
 
