@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "4.0.0-beta.0",
+  "version": "4.0.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "repository": {
     "type": "git",
@@ -11,6 +11,18 @@
   },
   "author": "Justin Voitel <mail@justinv.me>",
   "license": "MIT",
+  "keywords": [
+    "svelte",
+    "component",
+    "icon",
+    "icons",
+    "heroicons",
+    "tailwindcss"
+  ],
+  "bugs": {
+    "url": "https://github.com/JustinVoitel/svelte-hero-icons/issues"
+  },
+  "homepage": "https://github.com/JustinVoitel/svelte-hero-icons#readme",
   "files": [
     "heroicons",
     "*.svelte",
