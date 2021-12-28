@@ -14,44 +14,37 @@ Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant 
 
 ## Description
 
-- complete heroicon set optimized for svelte
+- complete [heroicons](https://heroicons.dev/) set optimized for svelte
 - programatically change solid or outline version based on the `solid` attribute
 - fully typed for a great IDE experience
-- works with SvelteKit & Vite
+- works out of the box with SvelteKit
+- SSR compatible (no JS is needed for the client to display the icon)
 
 ## Install
 
-- install as `dependency` (important)
+- install as `devDependency`
 
-NPM
+### Example for npm
 
 ```bash
-npm install svelte-hero-icons
+npm i -D svelte-hero-icons
 ```
 
 ## Configuration
 
-### [SvelteKit](https://github.com/sveltejs/kit) & [vitejs](https://github.com/vitejs/vite)
+## [SvelteKit](https://github.com/sveltejs/kit)
 
-- Add this to your `vite.config.js`, so all icons are bundled into one file -> no import waterfalls
+- svelte-hero-icons should work with SvelteKit `without any configuration`
+- If you have any problems, this could help adding to your `svelte.config.js`:
 
 ```js
-const config = {
-  kit: {
-    vite: {
-      //!IMPORTANT so the icon data can be imported (as JSON)
-      ssr: {
-        noExternal: ["svelte-hero-icons"],
-      },
-
-      // no import waterfalls in development
-      optimizeDeps: {
-        include: ["svelte-hero-icons"],
-      },
+kit: {
+  vite: {
+    ssr: {
+      noExternal: ["svelte-hero-icons"],
     },
   },
-};
-export default config;
+},
 ```
 
 ## Usage
@@ -75,29 +68,8 @@ export default config;
 <Icon src="{Filter}" class="h-6 text-red-500 w-6" />
 ```
 
-See all icons here: https://github.com/refactoringui/heroicons
-
-## Known Problems
-
-### Windows & pnpm
-
-If you are developing with Windows or pnpm you need to prevent the dependency from being externalized for SSR:
-
-```js
-const config = {
-  // ...
-  kit: {
-    // ...
-    vite: {
-      // ...
-      ssr: {
-        noExternal: ["svelte-hero-icons"],
-      },
-    },
-  },
-};
-```
-
 ## Author
 
 This package is based on [heroicons](https://github.com/refactoringui/heroicons)
+
+See all available icons here: https://github.com/refactoringui/heroicons
