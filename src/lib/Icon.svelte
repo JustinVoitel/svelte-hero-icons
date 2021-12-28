@@ -43,7 +43,7 @@
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      class="heroicon outline {customClass}"
+      class={customClass}
       aria-hidden={ariaHidden}
       width={size}
       height={size}
