@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "3.1.2",
+  "version": "4.0.0-beta.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "repository": {
     "type": "git",
@@ -41,10 +41,8 @@
     "svelte2tsx": "^0.4.5",
     "ts-node": "^10.2.1",
     "tslib": "^2.0.0",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "svelte-hero-icons": "*"
   },
-  "type": "module",
-  "dependencies": {
-    "svelte-hero-icons": "^3.1.2"
-  }
+  "type": "module"
 }

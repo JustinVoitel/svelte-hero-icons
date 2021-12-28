@@ -15,7 +15,7 @@ const config = {
     target: "#svelte",
     adapter: node(),
     package: {
-      exports: (file) => file === "index.js" || file === "Icon.svelte",
+      exports: (file) => file === "index.js",
       // files: (file) => !file.startsWith("internal"), //exclude internal Components
     },
     vite: {

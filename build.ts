@@ -27,8 +27,8 @@ function main() {
 async function writeSvgDict() {
   Object.keys(svgDict).forEach((name) => {
     writeFile(
-      join(outputIconset, `${name}.json`),
-      JSON.stringify(svgDict[name]),
+      join(outputIconset, `${name}.js`),
+      "export default " + JSON.stringify(svgDict[name]),
       (err: any) => {
         if (err) throw new Error(err);
       }
@@ -57,9 +57,7 @@ function getIconsFromDir(dir: "solid" | "outline") {
 function generateExportsModule() {
   const logger = createWriteStream(outputExportsModule, { flags: "a" });
   let exports = Object.keys(svgDict)
-    .map(
-      (name) => `export {default as ${name}} from "./heroicons/${name}.json"`
-    )
+    .map((name) => `export {default as ${name}} from "./heroicons/${name}.js"`)
     .join("\n");
   exports += `\nexport {default as Icon} from "./Icon.svelte"\n`;
   logger.write(exports);
