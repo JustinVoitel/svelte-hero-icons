@@ -5,7 +5,12 @@
 
 ## Info
 
-Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) to use more Icons in your projects
+Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant as a successor of svelte-hero-icons:
+
+- Icon Components for any framework (for now its only svelte)
+- Icon Packs (e.g heroicons, radix-icons, iconic-free)
+- A template to create your own publishable Icon Pack (Planned)
+- Now lives under an org that will focus on more ui tools that I have planned (primarily for svelte)
 
 ## Description
 
