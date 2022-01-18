@@ -6,10 +6,8 @@
 
   // const icons = Icons as unknown as any[];
 
-  import { Annotation } from "svelte-hero-icons";
-  import Icon from "svelte-hero-icons/Icon.svelte";
-
-  // console.log(Annotation, Icon);
+  import * as Icons from "svelte-hero-icons";
+  import { Icon } from "svelte-hero-icons";
 </script>
 
 <h1>Welcome to Heroicons in SvelteKit</h1>
@@ -28,4 +26,6 @@
   {/each}
 </div> -->
 
-<Icon src={Annotation} size="100" />
+<ul style="">
+  <Icon src={Icons.FingerPrint} size="100" />
+</ul>

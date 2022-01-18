@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "4.0.1",
+  "version": "4.0.3",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "repository": {
     "type": "git",
@@ -36,25 +36,26 @@
     "preview": "svelte-kit preview",
     "build:icons": "pnpm run clean && node --loader ts-node/esm build.ts",
     "clean": "rm -rf src/lib/heroicons src/lib/index.js",
-    "publish:beta": "pnpm run package && cd package && pnpm publish --tag beta",
-    "publish": "pnpm run package && cd package && pnpm publish"
+    "release:beta": "pnpm run package && cd package && pnpm publish --tag beta",
+    "release": "pnpm run package && cd package && pnpm publish"
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "next",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
-    "@types/node": "^16.7.10",
-    "heroicons": "^1.0.4",
+    "@types/node": "^16.11.20",
+    "heroicons": "^1.0.5",
     "html-parse-stringify": "^3.0.1",
     "pascalcase": "^1.0.0",
-    "svelte": "^3.42.4",
-    "svelte-check": "^2.0.0",
-    "svelte-preprocess": "^4.0.0",
-    "svelte2tsx": "^0.4.5",
-    "ts-node": "^10.2.1",
-    "tslib": "^2.0.0",
-    "typescript": "^4.4.2",
-    "svelte-hero-icons": "*"
+    "svelte": "^3.46.2",
+    "svelte-check": "^2.3.0",
+    "svelte-hero-icons": "*",
+    "svelte-preprocess": "^4.10.2",
+    "svelte2tsx": "^0.4.14",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4"
   },
-  "type": "module"
+  "type": "module",
+  "main": "index.js"
 }

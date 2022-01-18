@@ -3,14 +3,20 @@
   <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
 </div>
 
-## Info
+## Important Info for Current or New Users
 
-Check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant as a successor of svelte-hero-icons:
+This package won't be updated for the upcoming Heroicons 2.0 release and will stay as a reference to v1.x.
+
+If you want to use v2.0 Icons, check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant as a successor of svelte-hero-icons and will be be maintained instead:
+
+### What is @steeze-ui/Icons ?
 
 - Icon Components for any framework (for now its only svelte)
 - Icon Packs (e.g heroicons, radix-icons, iconic-free)
 - A template to create your own publishable Icon Pack (Planned)
 - Now lives under an org that will focus on more ui tools that I have planned (primarily for svelte)
+
+---
 
 ## Description
 
