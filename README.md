@@ -11,7 +11,7 @@ If you want to use v2.0 Icons, check out [@steeze-ui/icons](https://github.com/s
 
 ### What is @steeze-ui/Icons ?
 
-- Icon Components for any framework (for now its only svelte)
+- Icon Components for many framework (svelte, lit, solid and react)
 - Icon Packs (e.g heroicons, radix-icons, iconic-free)
 - A template to create your own publishable Icon Pack (Planned)
 - Now lives under an org that will focus on more ui tools that I have planned (primarily for svelte)
