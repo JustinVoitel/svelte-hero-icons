@@ -1,13 +1,7 @@
 <script lang="ts">
-  //* import Icon component and single Icon source
-  // import { Annotation, Icon } from "$lib";
+  import { Icon, AcademicCap, Fire } from "$lib";
 
-  // import * as Icons from "$lib";
-
-  // const icons = Icons as unknown as any[];
-
-  import * as Icons from "svelte-hero-icons";
-  import { Icon } from "svelte-hero-icons";
+  let solid = false;
 </script>
 
 <h1>Welcome to Heroicons in SvelteKit</h1>
@@ -26,6 +20,5 @@
   {/each}
 </div> -->
 
-<ul style="">
-  <Icon src={Icons.FingerPrint} size="100" />
-</ul>
+<input type="checkbox" bind:checked={solid} />
+<Icon src={Fire} size="100" solid={solid} />
