@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "4.1.1",
+  "version": "4.1.3",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
   "homepage": "https://github.com/JustinVoitel/svelte-hero-icons#readme",
   "exports": {
     ".": {
-      "import": "./index.js"
+      "import": "./index.js",
+      "types": "./index.d.ts"
     }
   },
   "scripts": {

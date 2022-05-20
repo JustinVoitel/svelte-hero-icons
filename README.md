@@ -74,6 +74,17 @@ kit: {
 <Icon src="{Filter}" class="h-6 text-red-500 w-6" />
 ```
 
+### Use with types
+
+```svelte
+<script>
+  import { Icon, Filter, type IconSource } from "svelte-hero-icons";
+  export let icon:IconSource = Filter
+</script>
+
+<Icon src="{icon}" solid />
+```
+
 ## Author
 
 This package is based on [heroicons](https://github.com/refactoringui/heroicons)
