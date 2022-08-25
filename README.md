@@ -52,6 +52,13 @@ kit: {
   },
 },
 ```
+- For newer version of Sveltekit. Add to your config object in `vite.config.js`:
+```js
+  ssr: {
+    noExternal: ["svelte-hero-icons"],
+  }
+
+```
 
 ## Usage
 
