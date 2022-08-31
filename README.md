@@ -41,16 +41,11 @@ npm i -D svelte-hero-icons
 ## [SvelteKit](https://github.com/sveltejs/kit)
 
 - svelte-hero-icons should work with SvelteKit `without any configuration`
-- If you have any problems, this could help adding to your `svelte.config.js`:
-
-```js
-kit: {
-  vite: {
-    ssr: {
-      noExternal: ["svelte-hero-icons"],
-    },
-  },
-},
+- If you have any problems, this could help adding to your `vite.config.js`:
+ ```js
+ ssr: {
+    noExternal: ["svelte-hero-icons"],
+  }
 ```
 
 ## Usage
