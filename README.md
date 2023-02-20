@@ -3,11 +3,7 @@
   <a href="https://www.npmjs.com/package/svelte-hero-icons"><img src="https://img.shields.io/npm/v/svelte-hero-icons.svg?style=flat" /></a>
 </div>
 
-## Important Info for Current or New Users
-
-This package won't be updated for the upcoming Heroicons 2.0 release and will stay as a reference to v1.x.
-
-If you want to use v2.0 Icons, check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant as a successor of svelte-hero-icons and will be be maintained instead:
+> If you want to use more Icons Packs and components for multiple Frameworks (React, Vue, Lit and more), check out [@steeze-ui/icons](https://github.com/steeze-ui/icons) which is meant as a successor to svelte-hero-icons:
 
 ### What is @steeze-ui/Icons ?
 
@@ -42,10 +38,11 @@ npm i -D svelte-hero-icons
 
 - svelte-hero-icons should work with SvelteKit `without any configuration`
 - If you have any problems, this could help adding to your `vite.config.js`:
- ```js
- ssr: {
-    noExternal: ["svelte-hero-icons"],
-  }
+
+```js
+ssr: {
+   noExternal: ["svelte-hero-icons"],
+ }
 ```
 
 ## Usage
@@ -58,9 +55,17 @@ npm i -D svelte-hero-icons
   // Only import what you need!
   import { Icon, ArrowUp, Filter } from "svelte-hero-icons";
 </script>
+<!-- default it's using the outline version of this icon -->
+<Icon src="{Filter}" />
 
-<!-- use solid attribute to control whether to show solid or outline version of icon -->
+<!-- use solid attribute to display the solid version of this icon -->
 <Icon src="{Filter}" solid />
+
+<!-- use mini attribute to display the mini version of this icon -->
+<Icon src="{Filter}" mini />
+
+<!-- in this (rather unusual) case solid will have the precedence -->
+<Icon src="{Filter}" solid mini />
 
 <!-- use size attribute to set icon size (32 -> 32px | 2rem | 100% == default ) -->
 <Icon src="{ArrowUp}" size="32" />

@@ -1,39 +1,17 @@
-import preprocess from "svelte-preprocess";
-import node from "@sveltejs/adapter-node";
+import adapter from '@sveltejs/adapter-auto'
+import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: preprocess(),
+	// Consult https://github.com/sveltejs/svelte-preprocess
+	// for more information about preprocessors
+	preprocess: preprocess(),
 
-  //   disableDependencyReinclusion: ["svelte-hero-icons"],
-  kit: {
-    // hydrate the <div id="svelte"> element in src/app.html
-    adapter: node(),
-    package: {
-      exports: (file) => file === "index.js",
-      // files: (file) => !file.startsWith("internal"), //exclude internal Components
-    },
-    vite: {
-      // server: {
-      //   fs: {
-      //     allow: ["package", "package.json"],
-      //   },
-      // },
-      // resolve: {
-      //   alias: {
-      //     "svelte-hero-icons": path.resolve("package"),
-      //   },
-      // },
-      optimizeDeps: {
-        include: ["svelte-hero-icons"],
-      },
-      ssr: {
-        noExternal: ["svelte-hero-icons"],
-      },
-    },
-  },
-};
+	kit: {
+		adapter: adapter()
+		// hydrate the <div id="svelte"> element in src/app.html
+	}
+}
 
-export default config;
+export default config
+

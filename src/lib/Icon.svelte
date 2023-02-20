@@ -4,8 +4,9 @@
   export let src: IconSource;
   export let size = "100%";
   export let solid = false;
+  export let mini = false;
 
-  $: icon = src?.[solid ? "solid" : "default"];
+  $: icon = src?.[solid ? "solid" : mini ? "mini" : "default"];
 
   if (size !== "100%") {
     if (

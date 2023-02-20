@@ -1,16 +1,20 @@
 {
+  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "es2020",
-    "lib": ["esnext"],
-    "target": "esnext",
+    "lib": [
+      "es2020",
+      "DOM"
+    ],
+    "target": "es2020",
     /**
 			svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
 			to enforce using \`import type\` instead of \`import\` for Types.
 			*/
     "importsNotUsedAsValues": "error",
     "isolatedModules": true,
-    // "resolveJsonModule": true,
+    "resolveJsonModule": true,
     /**
 			To have warnings/errors of the Svelte compiler at the correct position,
 			enable source maps by default.
@@ -23,17 +27,18 @@
     "allowJs": true,
     "checkJs": true,
     "paths": {
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"],
-      // "svelte-hero-icons": ["src/lib/index.js"],
-      // "svelte-hero-icons/*": ["src/lib/*"]
+      "$lib": [
+        "src/lib"
+      ],
+      "$lib/*": [
+        "src/lib/*"
+      ]
     }
   },
   "include": [
     "src/**/*.d.ts",
     "src/**/*.js",
     "src/**/*.ts",
-    "src/**/*.svelte",
-    "package"
+    "src/**/*.svelte"
   ]
 }
