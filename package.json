@@ -52,7 +52,7 @@
   "main": "index.js",
   "svelte": "index.js",
   "dependencies": {
-    "@steeze-ui/heroicons": "^1.1.1"
+    "@steeze-ui/heroicons": "^2.0.10"
   },
   "files": [
     "*.svelte",
