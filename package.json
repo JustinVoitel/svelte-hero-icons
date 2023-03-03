@@ -1,6 +1,6 @@
 {
   "name": "svelte-hero-icons",
-  "version": "5.0.0-next.0",
+  "version": "5.0.0",
   "description": "Heroicons for Svelte (Project based on heroicons)",
   "repository": {
     "type": "git",
