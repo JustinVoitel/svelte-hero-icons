@@ -40,26 +40,26 @@
     "package": "pnpm svelte-package"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "2.0.0",
-    "@sveltejs/kit": "1.7.2",
-    "@sveltejs/package": "1.0.0-next.1",
+    "@sveltejs/adapter-auto": "^2.1.0",
+    "@sveltejs/kit": "^1.27.0",
+    "@sveltejs/package": "^2.2.2",
     "@types/node": "^17.0.45",
     "esmo": "^0.14.1",
-    "prettier": "^2.8.4",
-    "prettier-plugin-svelte": "^2.9.0",
-    "svelte": "^3.55.1",
-    "svelte-check": "^3.0.3",
-    "svelte-preprocess": "^4.10.7",
-    "svelte2tsx": "^0.4.14",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.2"
+    "prettier": "^2.8.8",
+    "prettier-plugin-svelte": "^3.0.3",
+    "svelte": "^4.2.2",
+    "svelte-check": "^3.5.2",
+    "svelte-preprocess": "^5.0.4",
+    "svelte2tsx": "^0.6.23",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
   },
   "type": "module",
   "main": "index.js",
   "svelte": "index.js",
   "dependencies": {
-    "@steeze-ui/heroicons": "^2.2.2"
+    "@steeze-ui/heroicons": "^2.2.3"
   },
   "files": [
     "*.svelte",
