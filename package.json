@@ -26,7 +26,8 @@
   "exports": {
     ".": {
       "import": "./index.js",
-      "types": "./index.d.ts"
+      "types": "./index.d.ts",
+      "svelte": "./index.js"
     }
   },
   "scripts": {
