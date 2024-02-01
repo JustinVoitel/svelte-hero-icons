@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import * as Icons from "@steeze-ui/heroicons";
   import Icon from "$lib/Icon.svelte";
 
@@ -23,6 +23,7 @@
       size="24px"
       mini={theme == "mini"}
       solid={theme == "solid"}
+      micro={theme == "micro"}
     />
   {/each}
 </div>

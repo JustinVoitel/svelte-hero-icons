@@ -1,5 +1,13 @@
 # svelte-hero-icons
 
+## 5.1.0
+
+### Features
+
+- update @steeze-ui/heroicons to v2.3.0
+- add _micro_ property
+
+
 ## 5.0.0
 
 ### Breaking Changes

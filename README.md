@@ -17,7 +17,7 @@
 ## Description
 
 - complete [heroicons](https://heroicons.dev/) set optimized for svelte
-- programatically change solid or outline version based on the `solid` attribute
+- programatically change solid or outline version based on the `solid` attribute (solid, mini, micro)
 - fully typed for a great IDE experience
 - works out of the box with SvelteKit
 - SSR compatible (no JS is needed for the client to display the icon)
@@ -63,6 +63,9 @@ ssr: {
 
 <!-- use mini attribute to display the mini version of this icon -->
 <Icon src="{Filter}" mini />
+
+<!-- use micro attribute to display the micro version of this icon -->
+<Icon src="{Filter}" micro />
 
 <!-- in this (rather unusual) case solid will have the precedence -->
 <Icon src="{Filter}" solid mini />

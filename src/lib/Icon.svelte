@@ -1,12 +1,13 @@
-<script lang="ts">
-  import type { IconSource } from "@steeze-ui/heroicons/types";
+<script>
+  // import type { IconSource } from "@steeze-ui/heroicons/types";
 
-  export let src: IconSource;
+  export let src;
   export let size = "100%";
   export let solid = false;
   export let mini = false;
+  export let micro = false;
 
-  $: icon = src?.[solid ? "solid" : mini ? "mini" : "default"];
+  $: icon = src?.[solid ? "solid" : mini ? "mini" : micro ? "micro" : "default"];
 
   if (size !== "100%") {
     if (
