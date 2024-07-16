@@ -1,5 +1,11 @@
 # svelte-hero-icons
 
+## 5.2.0
+
+### Features
+
+- update to [heroicons@2.1.5](https://github.com/tailwindlabs/heroicons/blob/master/CHANGELOG.md#215---2024-07-10)
+
 ## 5.1.0
 
 ### Features
